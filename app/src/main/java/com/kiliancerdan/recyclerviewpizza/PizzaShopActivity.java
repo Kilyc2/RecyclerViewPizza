@@ -35,10 +35,10 @@ public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPre
         presenter = new PizzaShopPresenter(menuInteractor, orderInteractor);
         presenter.setView(this);
         orderList = (RecyclerView) findViewById(R.id.list_order);
+        orderList.setItemAnimator(new DefaultItemAnimator());
         orderList.setLayoutManager(new LinearLayoutManager(this));
         orderList.setHasFixedSize(true);
         orderList.setAdapter(new PizzaShopAdapter(new ArrayList<Pizza>()));
-        orderList.setItemAnimator(new DefaultItemAnimator());
         menu = (Spinner) findViewById(R.id.pizza_list_spinner);
         Button addPizza = (Button) findViewById(R.id.add_pizza);
         if (addPizza != null) {

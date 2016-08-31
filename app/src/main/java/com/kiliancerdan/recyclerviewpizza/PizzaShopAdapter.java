@@ -17,10 +17,10 @@ import java.util.List;
 public class PizzaShopAdapter extends RecyclerView.Adapter<PizzaShopAdapter.ViewHolder>
         implements View.OnClickListener {
 
-    List<Pizza> menu;
+    List<Pizza> pizzas;
 
-    public PizzaShopAdapter(List<Pizza> menu) {
-        this.menu = menu;
+    public PizzaShopAdapter(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class PizzaShopAdapter extends RecyclerView.Adapter<PizzaShopAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Pizza pizza = menu.get(position);
+        Pizza pizza = pizzas.get(position);
         holder.itemView.setTag(pizza);
         holder.pizzaName.setText(pizza.getName());
         holder.pizzaDescription.setText(pizza.getDescription());
@@ -51,23 +51,23 @@ public class PizzaShopAdapter extends RecyclerView.Adapter<PizzaShopAdapter.View
     @Override
     public void onClick(View v) {
         Pizza pizza = (Pizza)v.getTag();
-        int position = menu.indexOf(pizza);
+        int position = pizzas.indexOf(pizza);
         removeItem(position);
     }
 
     public void removeItem(int position) {
-        menu.remove(position);
+        pizzas.remove(position);
         notifyItemRemoved(position);
     }
 
     public void addItem(Pizza pizza) {
-        menu.add(0, pizza);
+        pizzas.add(0, pizza);
         notifyItemInserted(0);
     }
 
     @Override
     public int getItemCount() {
-        return menu.size();
+        return pizzas.size();
     }
 
 
