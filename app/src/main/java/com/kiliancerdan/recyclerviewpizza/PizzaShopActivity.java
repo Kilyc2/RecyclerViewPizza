@@ -11,13 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.kiliancerdan.pizzashop.model.Pizza;
 import com.kiliancerdan.pizzashop.pizzamenu.MenuInteractor;
 import com.kiliancerdan.pizzashop.pizzamenu.MenuInteractorImpl;
-import com.kiliancerdan.pizzashop.model.Pizza;
 import com.kiliancerdan.pizzashop.pizzaorder.OrderInteractor;
 import com.kiliancerdan.pizzashop.pizzaorder.OrderInteractorImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPresenter.PizzaShopView {
@@ -38,7 +37,7 @@ public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPre
         orderList.setItemAnimator(new DefaultItemAnimator());
         orderList.setLayoutManager(new LinearLayoutManager(this));
         orderList.setHasFixedSize(true);
-        orderList.setAdapter(new PizzaShopAdapter(new ArrayList<Pizza>()));
+        orderList.setAdapter(new PizzaShopAdapter());
         menu = (Spinner) findViewById(R.id.pizza_list_spinner);
         Button addPizza = (Button) findViewById(R.id.add_pizza);
         if (addPizza != null) {
