@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Recycler View Pizza</string>
+    <string name="add_button">Añadir pizza</string>
 </resources>

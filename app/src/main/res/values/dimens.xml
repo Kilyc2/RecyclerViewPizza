@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_size">5dp</dimen>
+    <dimen name="pizza_size">150dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="separation_title_size">3dp</dimen>
+
+    <dimen name="pizza_name_size">30sp</dimen>
+    <dimen name="pizza_description_size">15sp</dimen>
+</resources>
