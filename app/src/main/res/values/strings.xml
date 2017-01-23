@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Recycler View Pizza</string>
-    <string name="add_button">Añadir pizza</string>
+    <string name="add_button">Añadir</string>
+    <string name="order">Tu pedido llegara en 30 minutos</string>
 </resources>
