@@ -7,20 +7,20 @@ import com.kiliancerdan.pizzashop.pizzaorder.OrderInteractor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PizzaShopPresenter implements MenuInteractor.Callback, OrderInteractor.Callback {
+class PizzaShopPresenter implements MenuInteractor.Callback, OrderInteractor.Callback {
 
     private PizzaShopView view;
     private MenuInteractor menuInteractor;
     private OrderInteractor orderInteractor;
     private List<Pizza> menu;
 
-    public PizzaShopPresenter(MenuInteractor menuInteractor,
+    PizzaShopPresenter(MenuInteractor menuInteractor,
                               OrderInteractor orderInteractor) {
         this.menuInteractor = menuInteractor;
         this.orderInteractor = orderInteractor;
     }
 
-    public void setView(PizzaShopView view) {
+    void setView(PizzaShopView view) {
         this.view = view;
     }
 
@@ -31,7 +31,7 @@ public class PizzaShopPresenter implements MenuInteractor.Callback, OrderInterac
     @Override
     public void getMenu(List<Pizza> menu) {
         this.menu = menu;
-        view.showMenu(getMenuPizza());
+        view.fillMenu(getMenuPizza());
     }
 
     private List<String> getMenuPizza() {
@@ -42,7 +42,7 @@ public class PizzaShopPresenter implements MenuInteractor.Callback, OrderInterac
         return menuPizza;
     }
 
-    public void selectPizza(int position) {
+    void selectPizza(int position) {
         orderInteractor.requestPizza(menu.get(position), this);
     }
 
@@ -52,7 +52,7 @@ public class PizzaShopPresenter implements MenuInteractor.Callback, OrderInterac
     }
 
     interface PizzaShopView {
-        void showMenu(List<String> menuPizza);
+        void fillMenu(List<String> menuPizza);
         void addPizza(Pizza pizza);
     }
 }

@@ -2,9 +2,9 @@ package com.kiliancerdan.pizzashop.model;
 
 public class Pizza {
 
-    String name;
-    String image;
-    String description;
+    private String name;
+    private String image;
+    private String description;
 
     public Pizza(String name, String image, String description) {
         this.name = name;
