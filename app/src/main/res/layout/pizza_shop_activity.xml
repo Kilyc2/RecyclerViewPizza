@@ -1,46 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.kiliancerdan.recyclerviewpizza.PizzaShopActivity"
     >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list_order"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/pizza_list"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/pizza_item"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/pizza_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/margin_size"
+            android:gravity="center"
+            >
+
+            <Spinner
+                android:id="@+id/pizza_list_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:id="@+id/add_pizza_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableEnd="@drawable/ic_local_pizza_24dp"
+                android:drawablePadding="@dimen/margin_size"
+                android:text="@string/add_button"
+                />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/pizza_list"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/pizza_item"
+            />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_call"
+        app:fabSize="normal"
+        android:visibility="invisible"
         />
 
-    <LinearLayout
-        android:id="@+id/pizza_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true"
-        android:padding="@dimen/margin_size"
-        android:gravity="center"
-        >
-
-        <Spinner
-            android:id="@+id/pizza_list_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            />
-
-        <Button
-            android:id="@+id/add_pizza_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:text="@string/add_button"
-            />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

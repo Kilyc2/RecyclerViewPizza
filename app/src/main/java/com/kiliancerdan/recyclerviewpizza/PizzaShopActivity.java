@@ -2,6 +2,8 @@ package com.kiliancerdan.recyclerviewpizza;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -24,6 +26,7 @@ public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPre
     RecyclerView recyclerOrderList;
     PizzaShopAdapter adapter;
     Spinner spinnerMenu;
+    FloatingActionButton fabCall;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,13 +38,15 @@ public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPre
         presenter = new PizzaShopPresenter(menuInteractor, orderInteractor);
         presenter.setView(this);
 
-        spinnerMenu = (Spinner) findViewById(R.id.pizza_list_spinner);
+        spinnerMenu = (Spinner)findViewById(R.id.pizza_list_spinner);
 
-        Button addPizza = (Button) findViewById(R.id.add_pizza_button);
+        Button addPizza = (Button)findViewById(R.id.add_pizza_button);
         addPizza.setOnClickListener(this);
+        fabCall = (FloatingActionButton)findViewById(R.id.fab_call);
+        fabCall.setOnClickListener(this);
 
         adapter = new PizzaShopAdapter(this);
-        recyclerOrderList = (RecyclerView) findViewById(R.id.list_order);
+        recyclerOrderList = (RecyclerView)findViewById(R.id.list_order);
         recyclerOrderList.setAdapter(adapter);
     }
 
@@ -65,8 +70,17 @@ public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPre
                 presenter.selectPizza(spinnerMenu.getSelectedItemPosition());
                 break;
             case R.id.remove_pizza_button:
-                Pizza pizza = (Pizza)v.getTag();
-                adapter.removeItem(pizza);
+                removePizza((Pizza)v.getTag());
+                break;
+            case R.id.fab_call:
+                Snackbar.make(recyclerOrderList, getString(R.string.order), Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    private void removePizza(Pizza pizza) {
+        adapter.removeItem(pizza);
+        if (adapter.getItemCount() == 0) {
+            fabCall.hide();
         }
     }
 
@@ -74,5 +88,6 @@ public class PizzaShopActivity extends AppCompatActivity implements PizzaShopPre
     public void addPizza(Pizza pizza) {
         adapter.addItem(pizza);
         recyclerOrderList.scrollToPosition(0);
+        fabCall.show();
     }
 }
